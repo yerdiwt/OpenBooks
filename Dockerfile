@@ -56,7 +56,7 @@ COPY packages/web/package.json packages/web/
 # holds on linux too; a failure here means yarn.lock is genuinely stale.
 FROM toolchain AS deps
 ARG YARN
-RUN --mount=type=cache,id=yarn-cache,target=/opt/yarn node "${YARN}" install --immutable
+RUN --mount=type=cache,id=s/9edf1338-66c4-41fd-a394-8441f0af05f4-/opt/yarn,target=/opt/yarn node "${YARN}" install --immutable
 
 # ── build ────────────────────────────────────────────────────────────────────
 # `yarn build` at the root, per package.json. It emits dist/server/main.js via
