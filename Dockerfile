@@ -84,7 +84,7 @@ RUN node "${YARN}" build
 # module-not-found in this image while dev and test pass.
 FROM toolchain AS prod-deps
 ARG YARN
-RUN --mount=type=cache,id=yarn-cache,target=/opt/yarn \
+RUN --mount=type=cache,id=s/9edf1338-66c4-41fd-a394-8441f0af05f4-/opt/yarn,target=/opt/yarn \
     node "${YARN}" workspaces focus @openbooks/server --production
 
 # ── runtime ──────────────────────────────────────────────────────────────────
