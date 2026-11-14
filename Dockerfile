@@ -56,7 +56,7 @@ COPY packages/web/package.json packages/web/
 # holds on linux too; a failure here means yarn.lock is genuinely stale.
 FROM toolchain AS deps
 ARG YARN
-RUN --mount=type=cache,id=s/9edf1338-66c4-41fd-a394-8441f0af05f4-/opt/yarn,target=/opt/yarn node "${YARN}" install --immutable
+RUN --mount=type=cache,id=s/eae521a1-6fac-43ca-a8a2-3208ad223917-/opt/yarn,target=/opt/yarn node "${YARN}" install --immutable
 
 # ── build ────────────────────────────────────────────────────────────────────
 # `yarn build` at the root, per package.json. It emits dist/server/main.js via
@@ -84,7 +84,7 @@ RUN node "${YARN}" build
 # module-not-found in this image while dev and test pass.
 FROM toolchain AS prod-deps
 ARG YARN
-RUN --mount=type=cache,id=s/9edf1338-66c4-41fd-a394-8441f0af05f4-/opt/yarn,target=/opt/yarn \
+RUN --mount=type=cache,id=s/eae521a1-6fac-43ca-a8a2-3208ad223917-/opt/yarn,target=/opt/yarn \
     node "${YARN}" workspaces focus @openbooks/server --production
 
 # ── runtime ──────────────────────────────────────────────────────────────────
